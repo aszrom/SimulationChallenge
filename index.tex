@@ -5,11 +5,12 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-]{article}
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
 \usepackage{xcolor}
-\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -64,46 +65,6 @@
 \fi
 \makeatother
 
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{241,243,245}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
-\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
@@ -145,6 +106,7 @@
  
 
 
+\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -179,6 +141,15 @@
 \@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Proof}}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem{refremark}{Remark}[section]
+\newtheorem{refsolution}{Solution}[section]
 \makeatother
 \makeatletter
 \makeatother
@@ -190,8 +161,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={My Quarto Document},
-  pdfauthor={Your Name},
+  pdftitle={Simulation Challenge},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -200,149 +170,331 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{My Quarto Document}
-\author{Your Name}
-\date{2025-09-18}
+\title{Simulation Challenge}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Generative Models and Monte Carlo Simulation}
+\author{}
+\date{}
 \begin{document}
 \maketitle
 
 
-\section{Introduction}\label{introduction}
+\section{🎲 Simulation Challenge - Monte Carlo
+Analysis}\label{simulation-challenge---monte-carlo-analysis}
 
-This is a skeleton Quarto document to get you started. You can modify
-this template to suit your needs.
+\subsection{Challenge Overview}\label{challenge-overview}
 
-\subsection{What is Quarto?}\label{what-is-quarto}
+\textbf{Your Mission:} Create a comprehensive Quarto document that
+simulates one or two investment strategies, analyzes the results, and
+demonstrates your ability to present counter-intuitive findings
+compellingly. Then render the document to HTML and deploy it via GitHub
+Pages from a new repository called ``simulationChallenge.''
 
-Quarto is a scientific and technical publishing system built on Pandoc.
-It allows you to create dynamic content with R, Python, Julia, and
-Observable.
+\subsection{The Investment Game 🎯}\label{the-investment-game}
 
-\section{Code Examples}\label{code-examples}
+\subsubsection{Original Game Strategy}\label{original-game-strategy}
 
-\subsection{R Code}\label{r-code}
+\begin{example}[]\protect\hypertarget{exm-ErgodicityEconomicsExample}{}\label{exm-ErgodicityEconomicsExample}
 
-Here's an example of R code:
+Imagine you are offered the following game and given a \$1,000 budget in
+a special account to play the game: I will flip a coin, and if it comes
+up heads, we increase your account's balance by 50\%; if it comes up
+tails, we reduce your account's balance by 40\%. We are not only doing
+this once, but we will do it once per year until you turn 55. When you
+turn 55, you will receive the balance in your account.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(ggplot2)}
-\FunctionTok{data}\NormalTok{(mtcars)}
+\end{example}
 
-\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wt, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Miles per Gallon vs Weight"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Weight (1000 lbs)"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Miles per Gallon"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\subsubsection{Generative DAG Model for the Investment
+Game}\label{generative-dag-model-for-the-investment-game}
 
-\begin{figure}[H]
+\subsection{Challenge Requirements 📋}\label{challenge-requirements}
 
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-plot-1.pdf}}
-
-}
-
-\caption{\label{fig-plot}A simple plot}
-
-\end{figure}%
-
-\subsection{Python Code}\label{python-code}
-
-To use Python code in Quarto, you'll need to install the
-\texttt{reticulate} package in R:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"reticulate"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Then you can uncomment and use the Python code below:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Example Python code (uncomment when reticulate is installed)}
-\CommentTok{\# import matplotlib.pyplot as plt}
-\CommentTok{\# import numpy as np}
-\CommentTok{\# }
-\CommentTok{\# \# Generate some data}
-\CommentTok{\# x = np.linspace(0, 10, 100)}
-\CommentTok{\# y = np.sin(x)}
-\CommentTok{\# }
-\CommentTok{\# \# Create the plot}
-\CommentTok{\# plt.figure(figsize=(6, 4))}
-\CommentTok{\# plt.plot(x, y)}
-\CommentTok{\# plt.title(\textquotesingle{}Sine Wave\textquotesingle{})}
-\CommentTok{\# plt.xlabel(\textquotesingle{}x\textquotesingle{})}
-\CommentTok{\# plt.ylabel(\textquotesingle{}sin(x)\textquotesingle{})}
-\CommentTok{\# plt.grid(True)}
-\CommentTok{\# plt.show()}
-\end{Highlighting}
-\end{Shaded}
-
-\section{Mathematics}\label{mathematics}
-
-Quarto supports LaTeX math notation:
-
-Inline math: \(E = mc^2\)
-
-Display math:
-
-\[
-\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
-\]
-
-\section{Tables}\label{tables}
-
-Here's a simple table:
-
-\begin{longtable}[]{@{}lll@{}}
-\toprule\noalign{}
-Column 1 & Column 2 & Column 3 \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-A & 1 & X \\
-B & 2 & Y \\
-C & 3 & Z \\
-\end{longtable}
-
-\section{Cross-references}\label{cross-references}
-
-You can reference figures and tables. For example, see
-Figure~\ref{fig-plot}.
-
-\section{Citations}\label{citations}
-
-You can add citations using BibTeX format. Create a
-\texttt{references.bib} file and reference it in the YAML header.
-
-\section{Conclusion}\label{conclusion}
-
-This skeleton provides a starting point for your Quarto document.
-Customize it as needed for your specific project.
-
-\subsection{Next Steps}\label{next-steps}
+\subsubsection{Questions to Answer for 75\% Grade on
+Challenge}\label{questions-to-answer-for-75-grade-on-challenge}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
-  Modify the YAML header to match your project
+  \textbf{Expected Value Analysis:} What is the ``expected value'' of
+  your account balance after 1 coin flip for the original game?
 \item
-  Add your content
+  \textbf{Expectation vs.~Reality:} Is the expected value positive or
+  negative? Do you expect your account to be worth more or less than
+  \$1,000 based on this result?
 \item
-  Include any necessary data files
-\item
-  Set up version control
-\item
-  Render your document with \texttt{quarto\ render}
+  \textbf{Single Simulation:} Run one simulation showing the dynamics of
+  your account balance over time. Make an object-oriented matplotlib OR
+  ggplot2 plot showing your simulated account balance over time (i.e.~as
+  you age). Comment on the results, are you happy?
 \end{enumerate}
+
+\subsection{Analysis and Solutions}\label{analysis-and-solutions}
+
+\subsubsection{Question 1: Expected Value
+Analysis}\label{question-1-expected-value-analysis}
+
+\textbf{What is the ``expected value'' of your account balance after 1
+coin flip for the original game?}
+
+Let's calculate this step by step using R:
+
+\begin{verbatim}
+Expected Value Calculation:
+\end{verbatim}
+
+\begin{verbatim}
+========================
+\end{verbatim}
+
+\begin{verbatim}
+Initial Balance: $ 1000 
+\end{verbatim}
+
+\begin{verbatim}
+Heads (50% chance): $ 1000  × 1.5 = $ 1500 
+\end{verbatim}
+
+\begin{verbatim}
+Tails (50% chance): $ 1000  × 0.6 = $ 600 
+\end{verbatim}
+
+\begin{verbatim}
+
+Expected Value = 0.5 × $ 1500  + 0.5 × $ 600 
+\end{verbatim}
+
+\begin{verbatim}
+Expected Value = $ 750  + $ 300 
+\end{verbatim}
+
+\begin{verbatim}
+Expected Value = $ 1050 
+\end{verbatim}
+
+\begin{verbatim}
+
+Simulation Verification:
+\end{verbatim}
+
+\begin{verbatim}
+=======================
+\end{verbatim}
+
+\begin{verbatim}
+Simulated Expected Value (10,000 trials): $ 1044.87 
+\end{verbatim}
+
+\begin{verbatim}
+Theoretical Expected Value: $ 1050 
+\end{verbatim}
+
+\begin{verbatim}
+Difference: $ 5.13 
+\end{verbatim}
+
+\subsubsection{Question 2: Expectation
+vs.~Reality}\label{question-2-expectation-vs.-reality}
+
+\textbf{Is the expected value positive or negative? Do you expect your
+account to be worth more or less than \$1,000 based on this result?}
+
+\begin{verbatim}
+Expectation vs. Reality Analysis:
+\end{verbatim}
+
+\begin{verbatim}
+================================
+\end{verbatim}
+
+\begin{verbatim}
+Initial Investment: $ 1000 
+\end{verbatim}
+
+\begin{verbatim}
+Expected Value after 1 flip: $ 1050 
+\end{verbatim}
+
+\begin{verbatim}
+Expected Gain/Loss: $ 50 
+\end{verbatim}
+
+\begin{verbatim}
+Expected Return:  5 %
+\end{verbatim}
+
+\begin{verbatim}
+
+✅ The expected value is POSITIVE!
+Based on this result, I expect my account to be worth MORE than $1,000.
+This suggests the game is favorable in the long run.
+\end{verbatim}
+
+\begin{verbatim}
+
+🤔 But wait! Let's think about this more carefully...
+\end{verbatim}
+
+\begin{verbatim}
+The expected value calculation assumes we can play this game many times.
+\end{verbatim}
+
+\begin{verbatim}
+But in reality, we only get to play once per year until age 55.
+\end{verbatim}
+
+\begin{verbatim}
+This is a key insight about ergodicity economics!
+\end{verbatim}
+
+\subsubsection{Question 3: Single
+Simulation}\label{question-3-single-simulation}
+
+\textbf{Run one simulation showing the dynamics of your account balance
+over time. Make an object-oriented ggplot2 plot showing your simulated
+account balance over time (i.e.~as you age). Comment on the results, are
+you happy?}
+
+Let's simulate the investment game over multiple years to see how the
+account balance evolves:
+
+\begin{verbatim}
+Single Investment Simulation Results:
+\end{verbatim}
+
+\begin{verbatim}
+====================================
+\end{verbatim}
+
+\begin{verbatim}
+Starting Age: 25
+\end{verbatim}
+
+\begin{verbatim}
+Ending Age: 55
+\end{verbatim}
+
+\begin{verbatim}
+Initial Balance: $ 1000 
+\end{verbatim}
+
+\begin{verbatim}
+Final Balance: $ 205.89 
+\end{verbatim}
+
+\begin{verbatim}
+Total Return:  -79.4 %
+\end{verbatim}
+
+\begin{verbatim}
+Annualized Return:  -5.1 %
+\end{verbatim}
+
+\begin{verbatim}
+
+First 5 years:
+\end{verbatim}
+
+\begin{verbatim}
+# A tibble: 6 x 2
+    age balance
+  <dbl>   <dbl>
+1    25    1000
+2    26     600
+3    27     360
+4    28     540
+5    29     810
+6    30    1215
+\end{verbatim}
+
+\begin{verbatim}
+
+Last 5 years:
+\end{verbatim}
+
+\begin{verbatim}
+# A tibble: 5 x 2
+    age balance
+  <dbl>   <dbl>
+1    51    254.
+2    52    381.
+3    53    572.
+4    54    343.
+5    55    206.
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/single-simulation-1.pdf}}
+
+}
+
+\caption{Single simulation of investment game showing account balance
+over time}
+
+\end{figure}%
+
+\begin{verbatim}
+
+📊 Analysis of Single Simulation:
+\end{verbatim}
+
+\begin{verbatim}
+================================
+\end{verbatim}
+
+\begin{verbatim}
+❌ This simulation was UNSUCCESSFUL!
+The account shrank from $ 1000  to $ 205.89 
+This represents a loss of $ 794.11 
+\end{verbatim}
+
+\begin{verbatim}
+
+Year-by-year breakdown:
+\end{verbatim}
+
+\begin{verbatim}
+Winning years:  15 
+\end{verbatim}
+
+\begin{verbatim}
+Losing years:  15 
+\end{verbatim}
+
+\begin{verbatim}
+Win rate:  50 %
+\end{verbatim}
+
+\begin{verbatim}
+
+🤔 Key Insights:
+\end{verbatim}
+
+\begin{verbatim}
+===============
+\end{verbatim}
+
+\begin{verbatim}
+1. Despite a positive expected value (+5% per year), this single path shows the reality of randomness.
+\end{verbatim}
+
+\begin{verbatim}
+2. The multiplicative nature of the game means early losses are very hard to recover from.
+\end{verbatim}
+
+\begin{verbatim}
+3. This single simulation doesn't tell us the full story - we need to look at many simulations.
+\end{verbatim}
+
+\begin{verbatim}
+4. The log scale plot shows the exponential nature of the growth/decay process.
+\end{verbatim}
 
 
 
